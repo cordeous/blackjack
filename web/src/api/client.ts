@@ -1,6 +1,9 @@
 import type { RunConfig, SessionResult } from '../types/session';
 
-const BASE = (import.meta as any).env?.VITE_API_URL ?? 'http://localhost:8000';
+// In local dev, point to uvicorn on port 8000.
+// In production (Vercel), the Python API is served at /api.
+const BASE = (import.meta as any).env?.VITE_API_URL
+  ?? ((import.meta as any).env?.DEV ? 'http://localhost:8000' : '/api');
 
 export async function getHealth(): Promise<boolean> {
   try {
