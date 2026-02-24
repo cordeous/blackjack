@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gold:         #C9A962;
+  --color-gold-dim:     rgba(201,169,98,0.4);
+  --color-gold-bg:      rgba(201,169,98,0.06);
+  --color-page:         #0A0A0A;
+  --color-surface:      #141414;
+  --color-border:       #2A2A2A;
+  --color-border-sub:   #1A1A1A;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #848484;
+  --color-text-muted:   #4A4A4A;
+
+  --color-action-hit:    #16a34a;
+  --color-action-stand:  #dc2626;
+  --color-action-double: #d97706;
+  --color-action-split:  #7c3aed;
+
+  --color-win:  #16a34a;
+  --color-loss: #dc2626;
+  --color-push: #d97706;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { min-height: 100vh; }
+
+/* Typography */
+.font-serif { font-family: 'Cormorant Garamond', serif; }
+.font-mono  { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Card flip ── */
+@keyframes flip-in {
+  0%   { transform: rotateY(90deg) scale(0.9); opacity: 0; }
+  100% { transform: rotateY(0deg)  scale(1);   opacity: 1; }
+}
+.card-flip { animation: flip-in 0.22s ease-out forwards; }
+
+/* ── Slide up ── */
+@keyframes slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.slide-up { animation: slide-up 0.3s ease-out; }
+
+/* ── Fade in ── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in { animation: fade-in 0.4s ease-out; }
+
+/* ── Active agent glow ── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px var(--glow-color, #C9A962); }
+  50%       { box-shadow: 0 0 0 2px var(--glow-color, #C9A962), 0 0 12px var(--glow-color, #C9A962); }
+}
+.glow-pulse { animation: glow-pulse 1.2s ease-in-out infinite; }
+
+/* ── Leaderboard slide ── */
+@keyframes lb-slide {
+  from { transform: translateY(32px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.lb-slide { animation: lb-slide 0.4s ease-out; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #141414; }
+::-webkit-scrollbar-thumb { background: #2A2A2A; }
+
+/* Border helpers */
+.border-gold { border-color: #C9A962; }
+.border-dim  { border-color: #2A2A2A; }
